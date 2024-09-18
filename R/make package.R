@@ -1,8 +1,0 @@
-# usethis::create_package("path/to/longitudinalPCoA")
-usethis::use_readme_md()
-# usethis::use_data(example_data)
-usethis::use_mit_license()
-usethis::use_testthat()
-usethis::use_vignette("Introduction-to-longitudinalPCoA")
-usethis::use_build_ignore(c("README.md", "tests"))
-usethis::use_git_ignore(c(".Rhistory", ".RData", ".Rproj.user", ".DS_Store", ".Rbuildignore"))

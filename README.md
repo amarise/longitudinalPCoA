@@ -1,25 +1,11 @@
 
 # longitudinalPCoA
 
-<!-- badges: start -->
-<!-- badges: end -->
-
-The goal of longitudinalPCoA is to ...
+`longitudinalPCoA` provides tools to analyze microbiome data with longitudinal and hierarchical structures using adjusted PCoA, linear mixed models, and standardized residuals. The package is particularly suited for studies involving repeated measures and hierarchical/nested data.
 
 ## Installation
 
-You can install the development version of longitudinalPCoA like so:
-
-``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+You can install the package directly from the source:
+```r
+devtools::install_github("amarise/microbiome_visualization")
 ```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(longitudinalPCoA)
-## basic example code
-```
-
