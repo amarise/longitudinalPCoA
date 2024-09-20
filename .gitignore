@@ -4,3 +4,5 @@ inst/doc
 .RData
 .DS_Store
 .Rbuildignore
+/doc/
+/Meta/

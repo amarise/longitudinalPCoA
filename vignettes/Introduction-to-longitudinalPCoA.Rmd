@@ -16,7 +16,7 @@ vignette: >
 
 You can install the package from GitHub:
 
-```{r}
+```{r, results="hide", message=FALSE}
 devtools::install_github("amarise/longitudinalPCoA")
 ```
 
@@ -37,9 +37,6 @@ The `example_data` consists of:
 - `otu_counts`: A matrix of OTU counts where rows represent samples and columns represent different OTUs.
 
 ```{r}
-# View the structure of the dataset
-str(example_data)
-
 # View the first few rows of the metadata
 head(example_data$metadata)
 
@@ -51,16 +48,29 @@ dim(example_data$otu_counts)
 
 Next, we can demonstrate a principal coordinate analysis (PCoA) using the OTU counts. Here’s an example of how to perform a basic PCoA using the package:
 
-```{r}
+```{r, message=FALSE, fig.width=8, fig.height=5.5}
 # Perform PCoA on the OTU counts
 Aitchison_kernel_matrix <- AitchisonKernel(example_data$otu_counts)$K
 pcoa_result <- create_plot(metadata = example_data$metadata, kernel_matrix = Aitchison_kernel_matrix, retain_prop = 0.9, covariates = c("batch"), breaks = 4)
 
 # View the PCoA plot
-pcoa_result$plot
+pcoa_result$plot 
 ```
 
-This code performs PCoA, adjusting for covariates such as treatment and batch, and visualizes the results using kernel principal components.
+You can use the data frame `pcoa_result$full_df` to manually customize the resulting plot. For example, you can add color to the points according to the treatment group by creating a new column in the data frame to differentiate between the control and treatment arms:
+
+```{r, fig.width=9, fig.height=6.25}
+pcoa_result$full_df %>% 
+  mutate(Arm = ifelse(treatment == 0, "Control", "Treatment")) %>% 
+  ggplot(aes(x = PC1, y = PC2, color = Arm)) +
+  geom_point(size = 2) +
+  facet_wrap(~factor(interval), scales = 'free') +
+  labs(title = "PC2 vs PC1 of Standardized Residuals",
+         x = "PC1",
+         y = "PC2")+
+  theme_minimal()
+```
+
 
 # Conclusion
 
