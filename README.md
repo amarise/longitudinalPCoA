@@ -8,7 +8,7 @@
 
 - **Flexible visualization:** Allows customization of principal coordinate analysis (PCoA) plots.
   
-- **Kernel-based approach:** Uses Aitchison (or other) kernel matrices to capture global microbiome data properties.
+- **Kernel-based approach:** Kernel-based approach: Includes functions to generate both Aitchison and Bray-Curtis kernel matrices, suitable for compositional microbiome data and relative abundance data, respectively.
 
 - **Example dataset included:** Comes with a simulated dataset for testing and demonstration.
 
