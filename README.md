@@ -4,13 +4,13 @@
 
 ## Features
 
-- *Handles longitudinal data:* Incorporates linear mixed models (LMMs) to account for repeated measures.
+- **Handles longitudinal data:** Incorporates linear mixed models (LMMs) to account for repeated measures.
 
-- *Flexible visualization:* Allows customization of principal coordinate analysis (PCoA) plots.
+- **Flexible visualization:** Allows customization of principal coordinate analysis (PCoA) plots.
   
-- *Kernel-based approach:* Uses Aitchison (or other) kernel matrices to capture global microbiome data properties.
+- **Kernel-based approach:** Uses Aitchison (or other) kernel matrices to capture global microbiome data properties.
 
-- *Example dataset included:* Comes with a simulated dataset for testing and demonstration.
+- **Example dataset included:** Comes with a simulated dataset for testing and demonstration.
 
 ## Installation
 
