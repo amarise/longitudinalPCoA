@@ -2,10 +2,11 @@
 #'
 #' This function computes the Aitchison kernel matrix from microbiome data.
 #'
-#' @param Y Matrix of microbiome data with samples across rows and OTUs across columns.
+#' @param Y Matrix of microbiome count data with samples across rows and OTUs across columns.
 #' @return A list containing the kernel matrix, PCs, and PCA proportions.
 #' @export
 AitchisonKernel <- function(Y) {
+  library(Tjazi)
   clr <- clr_lite(Y, samples_are = 'rows', method = 'logunif', replicates = 1000)
   n <- nrow(Y)
   centerM <- diag(n) - 1/n

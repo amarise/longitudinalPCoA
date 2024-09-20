@@ -1,19 +1,67 @@
 ---
-title: "Introduction-to-longitudinalPCoA"
+title: "Introduction to longitudinalPCoA"
+author: "Amarise Little"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction-to-longitudinalPCoA}
+  %\VignetteIndexEntry{Introduction to longitudinalPCoA}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+# Introduction
+
+`longitudinalPCoA` is an R package that provides tools for visualizing longitudinal or hierarchical microbiome data, incorporating linear mixed models (LMMs) and kernel matrices for accurate visualization of temporal patterns. This vignette walks through the basic functionality of the package, using the provided example dataset.
+
+## Installation
+
+You can install the package from GitHub:
+
+```{r}
+devtools::install_github("amarise/longitudinalPCoA")
 ```
 
-```{r setup}
+## Loading the Package and Example Data
+
+Once installed, load the package and access the example dataset:
+
+```{r}
 library(longitudinalPCoA)
+
+# Load the example dataset
+data(example_data)
 ```
+
+The `example_data` consists of:
+
+- `metadata`: Information about the samples, including patient ID, time points, batch ID, and treatment group.
+- `otu_counts`: A matrix of OTU counts where rows represent samples and columns represent different OTUs.
+
+```{r}
+# View the structure of the dataset
+str(example_data)
+
+# View the first few rows of the metadata
+head(example_data$metadata)
+
+# Check the OTU counts matrix dimensions
+dim(example_data$otu_counts)
+```
+
+# Running Principal Coordinate Analysis (PCoA)
+
+Next, we can demonstrate a principal coordinate analysis (PCoA) using the OTU counts. Here’s an example of how to perform a basic PCoA using the package:
+
+```{r}
+# Perform PCoA on the OTU counts
+Aitchison_kernel_matrix <- AitchisonKernel(example_data$otu_counts)$K
+pcoa_result <- create_plot(metadata = example_data$metadata, kernel_matrix = Aitchison_kernel_matrix, retain_prop = 0.9, covariates = c("batch"), breaks = 4)
+
+# View the PCoA plot
+pcoa_result$plot
+```
+
+This code performs PCoA, adjusting for covariates such as treatment and batch, and visualizes the results using kernel principal components.
+
+# Conclusion
+
+The `longitudinalPCoA` package allows for detailed visualization and analysis of longitudinal microbiome data, adjusting for repeated measures and covariates. The example above shows how to load the dataset, visualize OTU counts, and perform PCoA.
